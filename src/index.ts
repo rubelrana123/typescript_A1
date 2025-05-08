@@ -32,18 +32,11 @@ function concatenateArrays<T>(...arrays: T[][]): T[] {
       result.push(...array);
     }
     return result;
- 
-     
-
 }
 // concatenateArrays(["a", "b"], ["c"]);       // Output: ["a", "b", "c"]
-const arrayresult = concatenateArrays([1, 2], [3, 4], [5]);     // Output: [1, 2, 3, 4, 5]
+ concatenateArrays(["a", "b"], ["c"]);      // Output: [1, 2, 3, 4, 5]
 
-// console.log(arrayresult)
-
-
-
-//problem 4
+//problem 4 test : done
 class Vehicle {
    private _make : string;
    private _year : number;
@@ -64,26 +57,20 @@ class Car extends Vehicle {
 
     }
     getModel () {
-        return `model : ${this._model}`
+        return `Model : ${this._model}`
 
     }
 }
 const myCar = new Car("Toyota", 2020, "Corolla");
-const results =  myCar.getInfo();// Output: "Make: Toyota, Year: 2020"
-// console.log(results)
-const result2 = myCar.getModel();  // Output: "Model: Corolla"
-// console.log(result2)
+ myCar.getInfo();// Output: "Make: Toyota, Year: 2020"
+ myCar.getModel();  // Output: "Model: Corolla"
+
 
 //problem 5 :
 function processValue(value: string | number): number {
-   if (typeof value === "string") {
-    return value.length;
-    
-   }
-   return value * value
-}
-// console.log(processValue("hello"));
-// console.log(processValue(10))
+    return typeof value === "string" ? value.length : value * 2;
+  }
+ 
 processValue(10);      // Output: 20
 processValue("hello"); // Output: 5
 
@@ -112,10 +99,8 @@ interface Product {
     { name: "Bag", price: 50 }
   ];
   
-  const myresult = getMostExpensiveProduct(products); 
-//   console.log(myresult) 
-  // Output: { name: "Bag", price: 50 }
-
+  getMostExpensiveProduct(products); 
+   // Output: { name: "Bag", price: 50 }
   //problem 7
   enum Day {
     Monday,
@@ -129,33 +114,29 @@ interface Product {
   
   function getDayType(day: Day): string {
     switch (day) {
-      case Day.Friday:
       case Day.Saturday:
+      case Day.Sunday:
         return "Weekend";
   
       default:
         return "Weekday";
     }
   }
- const rsult =  getDayType(Day.Monday);   // Output: "Weekday"
-  const dayresult = getDayType(Day.Sunday);  // Output: "Weekend"
-//   console.log(rsult, dayresult) 
+getDayType(Day.Monday);   // Output: "Weekday"
+getDayType(Day.Sunday);  // Output: "Weekend" // worldly weekend day saturday and sunday
  
 //task 8 
-async function squareAsync(n: number): Promise<number | void> {
-    new Promise<number>((resolve, reject) => {
-        if(n > 0){
-            setTimeout(() => {
-                return resolve(n * n);
-            }, 1000);
-        }
-        else {
-             reject("Error : Negative number not allowed");
-        }
-    
-    })
-    
-
-}
-// squareAsync(4).then(console.log);        // Output after 1s: 16
-// squareAsync(-3).catch(console.error);    // Output: Error: Negative number not allowed
+async function squareAsync(n: number): Promise<number> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(n * n);
+      }, 1000);
+  
+      if (n < 0) {
+        reject("Error: Negative number not allowed");
+      }
+    });
+  }
+  
+squareAsync(4).then(console.log);        // Output after 1s: 16
+squareAsync(-3).catch(console.error);    // Output: Error: Negative number not allowed
