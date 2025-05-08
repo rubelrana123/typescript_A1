@@ -5,71 +5,49 @@
 
 In the union type we can hold several type. You can define union using pipe(|).character.
 
-basic syntax of the union-
+ 
+ Example:
 
 ```ts
-function(id: string | number){
+//union type
+type Status = "success" | "error" | "loading";
+let currentStatus: Status;
+currentStatus = "success"; // ✅
+currentStatus = "error";   // ✅
+currentStatus = "loading"; // ✅
+currentStatus = "done";    // ❌ Error: not part of the union
 
-// here you can use id as number or string
-
-}
-```
-
-full example:
-
-```ts
-function studentID(id: string | number) {
-  console.log("Your ID is: " + id);
-}
-
-studentID(01); // Output: Your ID is: 01
-studentID("A11"); // Output: Your ID is: A11
 ```
 
 ## Intersection Types
 
 Intersection type mainly used to combine two type into one. You can use it use & character.
 
-basic syntax:
+Example :
 
 ```ts
-type A{
+// //intersection type
 
-a:string;
-
-}
-
-type B {
-
-b:number;
-
-}
-
-type AB = A & B;
-```
-
-full example:
-
-```ts
-type Person = {
+type User = {
   name: string;
-  age: number;
-}
+  email: string;
+};
 
-type Employee = {
-  employeeID: string;
-}
+type Admin = {
+  adminLevel: number;
+};
 
-type Staff = Person & Employee;
+type AdminUser = User & Admin;
 
-const employeeMembor: Staff = {
-  name: “Rafsan”,
-  age: 28,
-  employeeID: “A11”
-}
+const admin: AdminUser = {
+  name: "Rubel",
+  email: "rubel@example.com",
+  adminLevel: 1
+};
+
 ```
 
-Finally
+Summary : 
 
 1. When you need to use **one type out of multiple options**, consider using **Union Types**.
 

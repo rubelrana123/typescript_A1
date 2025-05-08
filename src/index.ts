@@ -1,4 +1,4 @@
-// Problem - 1 test : done:
+// Problem - 1 :
 function formatString(input: string, toUpper?: boolean): string {
     const result = toUpper === false ? input.toLowerCase() : input.toUpperCase();
     return result;
@@ -21,7 +21,6 @@ function filterByRating(items: { title: string; rating: number }[]): { title: st
     return filteredBooks;
 }
  filterByRating(books); 
-// Output: [ { title: "Book A", rating: 4.5 }, { title: "Book C", rating: 5.0 } ] 
 
 
 //problem 3 
@@ -33,10 +32,10 @@ function concatenateArrays<T>(...arrays: T[][]): T[] {
     }
     return result;
 }
-// concatenateArrays(["a", "b"], ["c"]);       // Output: ["a", "b", "c"]
+ concatenateArrays(["a", "b"], ["c"]);       // Output: ["a", "b", "c"]
  concatenateArrays(["a", "b"], ["c"]);      // Output: [1, 2, 3, 4, 5]
 
-//problem 4 test : done
+//problem 4 
 class Vehicle {
    private _make : string;
    private _year : number;
@@ -45,7 +44,7 @@ class Vehicle {
         this._year = year;
     }
     getInfo() {
-        return `Make: ${this._make}, Year: ${this._year}`
+        console.log(`Make: ${this._make}, Year: ${this._year}`)
 
     }
 }
@@ -57,7 +56,7 @@ class Car extends Vehicle {
 
     }
     getModel () {
-        return `Model : ${this._model}`
+        console.log(`Model : ${this._model}`)
 
     }
 }
@@ -99,8 +98,7 @@ interface Product {
     { name: "Bag", price: 50 }
   ];
   
-  getMostExpensiveProduct(products); 
-   // Output: { name: "Bag", price: 50 }
+  getMostExpensiveProduct(products);  // Output: { name: "Bag", price: 50 }
   //problem 7
   enum Day {
     Monday,
@@ -123,7 +121,7 @@ interface Product {
     }
   }
 getDayType(Day.Monday);   // Output: "Weekday"
-getDayType(Day.Sunday);  // Output: "Weekend" // worldly weekend day saturday and sunday
+getDayType(Day.Sunday);  // Output: "Weekend" // [weekend day saturday and sunday]
  
 //task 8 
 async function squareAsync(n: number): Promise<number> {
@@ -138,5 +136,5 @@ async function squareAsync(n: number): Promise<number> {
     });
   }
   
-squareAsync(4).then(console.log);        // Output after 1s: 16
-squareAsync(-3).catch(console.error);    // Output: Error: Negative number not allowed
+  squareAsync(4).then(console.log);        // Output after 1s: 16
+  squareAsync(-3).catch(console.error);    // Output: Error: Negative number not allowed
