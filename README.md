@@ -74,3 +74,43 @@ Finally
 1. When you need to use **one type out of multiple options**, consider using **Union Types**.
 
 1. When you need to **combine two or more types**, consider using **Intersection Types**.
+
+---
+
+# What is the use of the keyof keyword in TypeScript? Provide an example
+
+The keyof operator takes an object type and produces a string or numeric literal union of its keys.
+
+```ts
+interface User {
+  name: string;
+  age: number;
+}
+```
+
+Using `keyof`, we can create a type that represents the **keys** of the `Person` interface:
+
+```ts
+type PersonKeys = keyof Person; // Equivalent to: 'name' | 'age'
+```
+
+This means `PersonKeys` can only be one of `'name'`, `'age'`.
+
+Use `keyof` in a function to ensure only valid keys are used when accessing values:
+
+```ts
+function getValue<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
+}
+
+const person: Person = {
+  name: "Rafsan",
+  age: 25,
+};
+
+const value = getValue(person, "name");
+```
+
+In the above example `keyof` ensures that `key` must be a valid key of the object `T`. If you tried access any different property, that didn't exist in the object, TypeScript give you a error at compile time. Thats the power of type safety.
+
+The `keyof` keyword improve type safety by making sure you only access valid property names of a object
