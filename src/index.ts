@@ -1,5 +1,4 @@
-// console.log("B_5_A_1");
-// task -1 :
+// Problem - 1 test : done:
 function formatString(input: string, toUpper?: boolean): string {
     const result = toUpper === false ? input.toLowerCase() : input.toUpperCase();
     return result;
@@ -9,19 +8,21 @@ formatString("Hello");          // Output: "HELLO"
 formatString("Hello", true);   // Output: "HELLO"
 formatString("Hello", false);  // Output: "hello"
 
-//task 2
+//Problem : 2 test done : 
+
 const books = [
     { title: "Book A", rating: 4.5 },
     { title: "Book B", rating: 3.2 },
+    { title: "Book B", rating: 4 },
     { title: "Book C", rating: 5.0 }
   ];
 function filterByRating(items: { title: string; rating: number }[]): { title: string; rating: number }[] {
     let filteredBooks = items.filter((item) => item.rating >= 4);
     return filteredBooks;
 }
+ filterByRating(books); 
+// Output: [ { title: "Book A", rating: 4.5 }, { title: "Book C", rating: 5.0 } ] 
 
-const result = filterByRating(books); 
-// console.log(result)
 
 //problem 3 
 function concatenateArrays<T>(...arrays: T[][]): T[] {
